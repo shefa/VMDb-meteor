@@ -5,7 +5,9 @@ Movies.schema = new SimpleSchema({
 		type: String, 
 		max: 200
 	},
-	releaseDate: {type: Date},
+	releaseDate: {
+        type: Date
+    },
 	budget: {
 		type: Number, 
 		defaultValue: 0
@@ -22,28 +24,28 @@ Movies.schema = new SimpleSchema({
 		type: [Object],
 		defaultValue: []
 	},
-		"reviews.$.userId": {type: String},
-		"reviews.$.content": {type: String, max:1000},
-		"reviews.$.title": {type: String, max:200, defaultValue: ""},
-		"reviews.$.rate": {type: Number, decimal:true},
-
+        "reviews.$.userId": {type: String},
+        "reviews.$.content": {type: String, max:1000},
+        "reviews.$.title": {type: String, max:200, defaultValue: ""},
+        "reviews.$.rate": {type: Number, decimal:true},
 	ratings: {
 		type: [Object],
 		defaultValue: []
 	},
 		"ratings.$.userId": {type: String},
 		"ratings.$.rate": {type: Number, decimal:true},
-
-	avgRate: {type: Number, decimal:true},
-	rateCount: {type: Number},
-
-	rateByGender: {type: [Number]},
-	rateByGenderCount: {type: Number},
-
-	rateByAge: {type: [Number]},
-	rateByAgeCount: {type: Number},
-
-	rateByProfession: {type: [Number]},
-	rateByProfessionCount: {type: Number}
+    
+    aggregates: {
+        type: [Object],
+        defaultValue: [{},{},{},{}]
+    },
+        "aggregates.$.average": {
+            type: Number, 
+            decimal: true,
+            defaultValue:0
+        },
+        "aggregates.$.count": {
+            type: Number,
+            defaultValue:0
+        }
 });
-

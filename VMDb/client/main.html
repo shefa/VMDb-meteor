@@ -1,25 +1,46 @@
 <head>
-  <title>VMDb</title>
+  <title>VMDb - Vum Movies Database</title>
 </head>
 
-<body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
-  {{> info}}
-</body>
-
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="App_body">
+    <div class="ui vertical masthead center aligned segment">
+        {{>menu}}
+        {{> Template.dynamic template=main}} 
+    </div>
+    {{>footer}}
 </template>
 
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+<template name="menu">
+    <div class="ui container">
+        <div class="ui large secondary pointing menu">
+            <a class="toc item"><i class="sidebar icon"></i></a>
+            <a href="/" class="item">Home</a>
+            {{#if isAdmin}}
+            <a href="/add" class="item">Add movie</a>
+            {{/if}}
+            <div class="right item">
+                {{#if currentUser}}
+                    <a href="#" class="ui button" id="logout">Sign out</a>
+                {{else}}
+                    <a href="/login"  class="ui button">Sign in</a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="footer">
+    <div class="ui vertical footer segment">
+        <div class="ui container">
+            <p>VUM Coursework - Developing Quality Software and Systems II</p>
+            <p>Developed by Georgi Marinov</p>
+            <p>January, 2018</p>
+        </div>
+    </div>
+</template>
+
+<template name="App_notFound">
+    <div class="ui text container">
+        <h1 class="ui inverted dividing header">404 Not Found</h1>
+    </div>
 </template>

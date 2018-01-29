@@ -6,6 +6,7 @@ UserInfo.schema = new SimpleSchema({
 	lastName: {type: String},
 	age: {type: Number},
 	gender: {type: Number},
-	profession: {type: String}
+	profession: {type: String},
+    admin: {type: Boolean}
 });
 
