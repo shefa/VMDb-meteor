@@ -1,0 +1,24 @@
+<template name="add_movie">
+<div class="ui container stuff">
+<form class="ui form">
+  <div class="field">
+    <label>Movie Title</label>
+    <input type="text" name="movie-title" placeholder="Title" required>
+  </div>
+  <div class="field">
+    <label>Movie Description</label>
+    <input type="text" name="movie-description" placeholder="Description"
+    required>
+  </div>
+  <div class="field">
+    <label>Release Date</label>
+    <input type="date" name="release-date" required>
+  </div>
+  <div class="field">
+    <label>Budget</label>
+    <input type="number" name="budget" required>
+  </div>
+  <button class="ui button" type="submit">Add movie</button>
+</form>
+</div>
+</template>

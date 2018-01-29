@@ -13,6 +13,6 @@ Template.menu.helpers({
 
 Template.menu.events({
     'click #logout' : function(){
-        Meteor.logout();
+        AccountsTemplates.logout();
     }
 });

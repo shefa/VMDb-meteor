@@ -43,6 +43,13 @@ FlowRouter.route('/add', {
   }
 });
 
+FlowRouter.route('/actors', {
+  name: 'add.actor',
+  action(params, queryParams) {
+    BlazeLayout.render('App_body', { main: 'add_actor' });
+  }
+});
+
 FlowRouter.notFound = {
   action() {
     BlazeLayout.render('App_body', { main: 'App_notFound' });
