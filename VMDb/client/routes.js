@@ -36,6 +36,13 @@ FlowRouter.route('/movie/:_id', {
     },
 });
 
+FlowRouter.route('/add', {
+  name: 'add.movie',
+  action(params, queryParams) {
+    BlazeLayout.render('App_body', { main: 'add_movie' });
+  }
+});
+
 FlowRouter.notFound = {
   action() {
     BlazeLayout.render('App_body', { main: 'App_notFound' });
