@@ -4,7 +4,7 @@ Meteor.helpers.genderIdFromName = function(genderName){
     var gendObj = Genders.findOne({name:genderName});
     if(gendObj===undefined){ 
         //console.log("inserting new gender "+genderName);
-        Genders.insert({genderId:gend, name: genderNamer});
+        Genders.insert({genderId:id, name: genderNamer});
     }
     else id=gendObj.genderId;
     return id;
