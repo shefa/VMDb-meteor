@@ -37,9 +37,9 @@ Movies.schema = new SimpleSchema({
     
     aggregates: {
         type: [Object],
-        defaultValue: [{},{},{},{}]
+        defaultValue: [{}]
     },
-        "aggregates.$.average": {
+        "aggregates.$.sum": {
             type: Number, 
             decimal: true,
             defaultValue:0
@@ -47,5 +47,9 @@ Movies.schema = new SimpleSchema({
         "aggregates.$.count": {
             type: Number,
             defaultValue:0
-        }
+        },
+        "aggregates.$.name": {
+        	type: String,
+        	max: 32
+        },
 });

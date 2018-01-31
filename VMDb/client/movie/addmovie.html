@@ -7,8 +7,7 @@
   </div>
   <div class="field">
     <label>Movie Description</label>
-    <input type="text" name="movie-description" placeholder="Description"
-    required>
+    <input type="text" name="movie-description" placeholder="Description" required>
   </div>
   <div class="field">
     <label>Release Date</label>
@@ -17,6 +16,19 @@
   <div class="field">
     <label>Budget</label>
     <input type="number" name="budget" required>
+  </div>
+  <div class="field">
+    <label>Actors</label>
+    <select class="ui fluid search dropdown" multiple="" id="actorSelect">
+      <option value="">Actor</option>
+      {{#each actor in getActors}}
+        <option value="{{actor._id}}">{{actor.firstName}} {{actor.lastName}}</option>
+      {{/each}}  
+    </select>
+  </div>
+  <div class="ui success message">
+    <div class="header">Success</div>
+    <p>Successfully added movie.</p>
   </div>
   <button class="ui button" type="submit">Add movie</button>
 </form>

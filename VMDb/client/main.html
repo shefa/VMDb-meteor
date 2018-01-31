@@ -16,8 +16,8 @@
             <a class="toc item"><i class="sidebar icon"></i></a>
             <a href="/" class="item">Home</a>
             {{#if isAdmin}}
-            <a href="/add" class="item">Add movie</a>
-            <a href="/actors" class="item">Add actor</a>
+            <a href="/addMovie" class="item">Add movie</a>
+            <a href="/addActor" class="item">Add actor</a>
             {{/if}}
             <div class="right item">
                 {{#if currentUser}}
@@ -43,5 +43,14 @@
 <template name="App_notFound">
     <div class="ui text container">
         <h1 class="ui inverted dividing header">404 Not Found</h1>
+    </div>
+</template>
+
+<template name="login_page">
+    {{#if currentUser}}
+        {{goHome}}
+    {{/if}}
+    <div class="ui text container stuff">
+        {{> atForm}}
     </div>
 </template>

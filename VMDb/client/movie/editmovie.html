@@ -1,0 +1,38 @@
+<template name="edit_movie">
+<div class="ui container stuff">
+{{#with getMovie}}
+<form class="ui form">
+  <div class="field">
+    <label>Movie Title</label>
+    <input type="text" name="movie-title" placeholder="Title" value="{{title}}" required>
+  </div>
+  <div class="field">
+    <label>Movie Description</label>
+    <input type="text" name="movie-description" placeholder="Description" value="{{description}}" required>
+  </div>
+  <div class="field">
+    <label>Release Date</label>
+    <input type="date" name="release-date" value="{{getDateFormat}}" required>
+  </div>
+  <div class="field">
+    <label>Budget</label>
+    <input type="number" name="budget" value="{{budget}}" required>
+  </div>
+  <div class="field">
+    <label>Actors</label>
+    <select class="ui fluid search dropdown" multiple="" id="actorSelect">
+      <option value="">Actor</option>
+      {{#each actor in getActors}}
+        <option value="{{actor._id}}">{{actor.firstName}} {{actor.lastName}}</option>
+      {{/each}}  
+    </select>
+  </div>
+  <div class="ui success message">
+    <div class="header">Success</div>
+    <p>Successfully updated movie.</p>
+  </div>
+  <button class="ui button" type="submit">Update movie</button>
+</form>
+{{/with}}
+</div>
+</template>

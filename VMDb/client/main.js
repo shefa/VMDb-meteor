@@ -1,18 +1,19 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
-
-import './main.html';
-
 Template.menu.helpers({
-  isAdmin() {
-    var usr = UserInfo.findOne({userId:Meteor.userId()});
-    if(usr===undefined) return false;
-    return usr.admin;
-  },
+  	isAdmin: function() {
+    	return Meteor.helpers.isAdmin();
+  	},
 });
 
 Template.menu.events({
     'click #logout' : function(){
         AccountsTemplates.logout();
+        FlowRouter.go('App.home');
     }
+});
+
+Template.login_page.helpers({
+  	goHome: function()
+  	{
+  		FlowRouter.go('App.home');
+  	}
 });

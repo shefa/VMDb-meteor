@@ -1,0 +1,56 @@
+<template name="home_page">
+<div class="ui text container left aligned">
+    {{#if currentUser}}
+        <div class="ui relaxed grid container">
+          <div class="ten wide column"><h2 class="ui dividing header">Movies</h2></div>
+          <div class="six wide column"><h2 class="ui dividing header">Actors</h2></div>
+          <div class="ten wide column">
+            <div class="ui divided items">
+            {{#each movies}}
+                {{> movies_home}}
+            {{/each}}
+            </div>
+          </div>
+          <div class="six wide column">
+            <div class="ui divided items">
+            {{#each actors}}
+                {{> actors_home}}
+            {{/each}}
+            </div>
+          </div>
+        </div>
+    {{else}}
+        <h1 class="ui header stuff">You must log in first!</h1>
+    {{/if}}
+</div>
+</template>
+
+<template name="movies_home">
+<div class="item button moviesList" style="padding: 1em 3em !important;" id="{{_id}}">
+  <div class="content">
+    <a class="header">{{title}}</a>
+    <div class="meta">
+      <span class="cinema">{{getYear releaseDate}}, {{budget}}$</span>
+    </div>
+    <div class="description">
+      <p>{{description}}</p>
+    </div>
+    <div class="extra">
+    {{#each actor in movieActors}}
+      <div class="ui label">{{actor.firstName}} {{actor.lastName}}</div>
+    {{/each}}
+    </div>
+  </div>
+</div>
+</template>
+
+<template name="actors_home">
+<div class="item button moviesList" style="padding: 1em 3em !important;" id="{{_id}}">
+  <div class="content">
+    <a class="header">{{firstName}} {{lastName}}</a>
+    <div class="meta">
+      <span class="cinema">{{getGender}}, {{age}}</span>
+    </div>
+  </div>
+</div>
+</template>

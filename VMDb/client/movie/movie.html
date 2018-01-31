@@ -1,0 +1,121 @@
+<template name="movie">
+<div class="ui basic modal">
+  <div class="ui icon header">
+    <i class="delete icon"></i>
+    Delete Movie
+  </div>
+  <div class="content" style="text-align: right !important;">
+    <p>Are you sure you want to delete this movie?</p>
+  </div>
+  <div class="actions">
+    <div class="ui red cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <div class="ui green ok inverted button confirmDelete" id="confirmDelete">
+      <i class="checkmark icon"></i>
+      Yes
+    </div>
+  </div>
+</div>
+
+	<div class="ui text containter">
+	{{#with getMovie}}
+	<h1 class="ui dividing header container">{{title}}</h1>
+	<div id="movieAverage" class="ui star rating" data-rating="{{getRating aggregates}}" data-max-rating="10" style="margin-bottom: 2em;"></div>
+	<div class="ui grid container">
+		<div class="eight wide column">
+			<div class="ui raised segment container">
+				<h3 class="ui dividing header">Description</h3>
+				<p>{{description}}</p>
+			</div>
+		</div>
+		<div class="eight wide column">
+			<div class="ui raised segment container">
+				<h3 class="ui dividing header">Actors</h3>
+				{{#each actor in movieActors}}
+					<div class="ui label button actorButton" id="{{actor._id}}">{{actor.firstName}} {{actor.lastName}}</div>
+				{{/each}}
+			</div>
+		</div>
+		<div class="eight wide column">
+			<div class="ui raised segment container">
+				<h3 class="ui dividing header">Release date</h3>
+				<p>{{getYear releaseDate}}</p>
+			</div>
+		</div>
+		<div class="eight wide column">
+			<div class="ui raised segment container">
+				<h3 class="ui dividing header">Budget</h3>
+				<p>{{budget}}$</p>
+			</div>
+		</div>
+
+		<div class="eight wide column">
+			<div class="ui raised segment container">
+				<h3 class="ui dividing header">Ratings</h3>
+				<div class="ui divided items">
+				{{#each aggregates}}
+					<div class="item">
+						<div class="left aligned">
+							<span>Average rating by {{name}} users</span>
+						</div>
+						<div class="right aligned content">
+							<div id="aggregate{{name}}" class="ui star rating aggregateRating" data-rating="{{getRatingAggregate}}" data-max-rating="10" style="margin-bottom: 2em;"></div>
+							<span>({{count}} times rated)</span>
+						</div>
+					</div>
+				{{/each}}
+				</div>
+			</div>
+		</div>
+		<div class="eight wide column">
+			<div class="ui raised segment container">
+				<h3 class="ui dividing header">Actions</h3>
+				<a href="#" class="ui button" id="rateBtn">Rate</a>
+				<a href="#" class="ui button" id="reviewBtn">Review</a>
+				{{#if isAdmin}}
+				<a href="#" class="ui button" id="editBtn">Edit</a>
+				<a href="#" class="ui button negative" id="deleteBtn">Delete</a>
+				{{/if}}
+				<div id="rateMe" class="ui star rating" data-rating="{{getMyRating}}" data-max-rating="10" style="margin-bottom: 2em;"></div>
+				<div id="reviewMe" class="ui form" style="display: none;">
+					<div class="field">
+						<label>Review title</label>
+						<input type="text" placeholder="What you think about the movie">
+					</div>
+					<div class="field">
+						<label>Review text</label>
+						<textarea></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="eight wide column">
+			<div class="ui raised segment container">
+				<div class="ui comments">
+				<h3 class="ui dividing header">Reviews</h3>
+				
+				{{#each reviews}}
+					<div class="comment">
+						<div class="content">
+						<span class="author">{{title}}</span>
+						<div class="metadata">
+							<div id="review{{userId}}" class="ui star rating reviewrate" data-rating="{{revrate}}" data-max-rating="10" style="margin-bottom: 2em;"></div>
+							<span>{{getAuthor}}</span>
+						</div>
+						<div class="text">{{content}}</div>
+						</div>
+					</div>
+					<div class="ui divider"></div>
+				{{/each}}
+				{{#if noReviews}}
+				<p>No reviews yet.</p>
+				{{/if}}
+				</div>
+			</div>
+		</div>
+	</div>
+	{{/with}}
+	</div>
+</template>

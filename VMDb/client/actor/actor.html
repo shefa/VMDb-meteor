@@ -1,0 +1,57 @@
+<template name="actor">
+<div class="ui basic modal">
+  <div class="ui icon header">
+    <i class="delete icon"></i>
+    Delete Actor
+  </div>
+  <div class="content" style="text-align: right !important;">
+    <p>Are you sure you want to delete this actor?</p>
+  </div>
+  <div class="actions">
+    <div class="ui red cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <div class="ui green ok inverted button confirmDelete" id="confirmDelete">
+      <i class="checkmark icon"></i>
+      Yes
+    </div>
+  </div>
+</div>
+
+<div class="ui text container">
+{{#with getActor}}
+	<h1 class="ui dividing header container stuff">{{firstName}} {{lastName}}</h1>
+	<div class="ui grid container">
+		<div class="five wide column">
+			<div class="ui raised segment container">
+				<h3 class="ui dividing header">Age</h3>
+				<p>{{age}}</p>
+			</div>
+		</div>
+		<div class="five wide column">
+			<div class="ui raised segment container">
+				<h3 class="ui dividing header">Gender</h3>
+				<p>{{getGender}}</p>
+			</div>
+		</div>
+		{{#if isAdmin}}
+		<div class="six wide column">
+			<div class="ui raised segment container">
+				<a href="#" class="ui button" id="editBtn">Edit</a>
+				<a href="#" class="ui button negative" id="deleteBtn">Delete</a>
+			</div>
+		</div>
+		{{/if}}
+		<div class="sixteen wide column">
+			<div class="ui raised segment container">
+				<h3 class="ui dividing header">Filmography</h3>
+				{{#each getMovies}}
+					<div class="ui label">{{title}}({{getYear}})</div>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+{{/with}}
+</div>
+</template>

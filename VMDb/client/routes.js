@@ -36,18 +36,39 @@ FlowRouter.route('/movie/:_id', {
     },
 });
 
-FlowRouter.route('/add', {
+FlowRouter.route('/addMovie', {
   name: 'add.movie',
   action(params, queryParams) {
     BlazeLayout.render('App_body', { main: 'add_movie' });
   }
 });
 
-FlowRouter.route('/actors', {
+FlowRouter.route('/editMovie/:_id', {
+    name: 'edit.movie',
+    action(){
+        BlazeLayout.render('App_body', {main: 'edit_movie'});
+    },
+});
+
+FlowRouter.route('/actor/:_id', {
+    name: 'view.actor',
+    action(){
+        BlazeLayout.render('App_body', {main: 'actor'});
+    },
+});
+
+FlowRouter.route('/addActor', {
   name: 'add.actor',
   action(params, queryParams) {
     BlazeLayout.render('App_body', { main: 'add_actor' });
   }
+});
+
+FlowRouter.route('/editActor/:_id', {
+    name: 'edit.actor',
+    action(){
+        BlazeLayout.render('App_body', {main: 'edit_actor'});
+    },
 });
 
 FlowRouter.notFound = {
